@@ -2,18 +2,21 @@ const express = require('express');
 
 require('dotenv').config;
 const mongoose = require(`mongoose`);
+const jwt = require(`jsonwebtoken`);
 const app = express();
 
 
 app.set(`view engine`, `ejs`);
-app.set(`view engine`, `/views`);
+app.set(`views`, `./views`);
 
 app.use(express.static(`public`));
 
 const url="mongodb+srv://chukwudiossai1974:Chukwudi1@cluster0.tt8vgje.mongodb.net/";
 
 
-
+app.get(`/`, (req, res) =>{
+  res.render((`login`));
+});
 
 mongoose.connect(url)
 .then(() =>{
